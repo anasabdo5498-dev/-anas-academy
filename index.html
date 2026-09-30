@@ -3,29 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أكاديمية أنس التعليمية</title>
-<meta name="description" content="أكاديمية أنس التعليمية - منصة شاملة للثانوية العامة والبرمجة">
+<title>أكاديمية أنس - متفاعلة</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
-body{background:#f0f2f5}
-header{background:#0b1d3a;color:#fff;padding:20px;text-align:center}
-.hero{background:linear-gradient(135deg,#0b1d3a,#2a5bd7);color:#fff;padding:40px 20px;text-align:center}
-.hero button{margin-top:15px;padding:12px 25px;border:none;border-radius:25px;background:#00e676;font-weight:bold;font-size:16px}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:20px}
-.card{background:#fff;padding:20px;border-radius:15px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.1)}
-footer{background:#0b1d3a;color:#fff;text-align:center;padding:15px;margin-top:20px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
+body{background:#f1f5f9;color:#1e293b}
+header{background:linear-gradient(135deg,#0f172a,#1e40af);color:white;text-align:center;padding:30px 15px}
+.hero{background:#1e40af;color:white;text-align:center;padding:40px 20px}
+.btn{display:inline-block;background:#22c55e;color:white;padding:12px 28px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:15px;font-size:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:20px}
+.card{background:white;border-radius:18px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer}
+.section{display:none;padding:20px}
+.section.active{display:block}
+.back{background:#0f172a;color:white;border:none;padding:10px 20px;border-radius:10px;margin-bottom:15px}
+.video-box{background:white;border-radius:12px;padding:15px;margin:10px 0}
+a.wa{display:block;background:#25D366;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:15px}
+footer{background:#0f172a;color:white;text-align:center;padding:15px;margin-top:30px}
 </style>
 </head>
 <body>
 <header><h1>📚 أكاديمية أنس</h1><p>مساحة للتعلم الواضح</p></header>
-<div class="hero"><h2>اتعلم من البيت بسهولة</h2><p>فيديوهات - مذكرات - امتحانات</p><button>ابدأ الآن</button></div>
-<div class="cards">
-<div class="card"><h3>3 ثانوي</h3><p>مراجعات نهائية</p></div>
-<div class="card"><h3>2 ثانوي</h3><p>شرح مبسط</p></div>
-<div class="card"><h3>برمجة</h3><p>HTML, Python</p></div>
-<div class="card"><h3>قرآن</h3><p>حفظ ومتابعة</p></div>
+<div id="home">
+<div class="hero"><h2>اتعلم من البيت بسهولة</h2><p>فيديوهات - مذكرات - امتحانات</p><a class="btn" href="#" onclick="openWhatsApp()">ابدأ الآن - كلم المدرس</a></div>
+<div class="grid">
+<div class="card" onclick="openSection('s3')"><h3>3 ثانوي</h3><p>مراجعات نهائية</p></div>
+<div class="card" onclick="openSection('s2')"><h3>2 ثانوي</h3><p>شرح مبسط</p></div>
+<div class="card" onclick="openSection('prog')"><h3>برمجة</h3><p>HTML, Python</p></div>
+<div class="card" onclick="openSection('quran')"><h3>قرآن</h3><p>حفظ ومتابعة</p></div>
 </div>
+</div>
+<div id="s3" class="section"><button class="back" onclick="goHome()">← رجوع للرئيسية</button><h2>3 ثانوي - المراجعات</h2><div class="video-box"><h4>📄 مذكرة فيزياء - الفصل الأول</h4><p>جاهزة للتحميل</p></div><div class="video-box"><h4>🎥 فيديو كيمياء - الباب الأول</h4><p>سيتم اضافته</p></div><a class="wa" href="#" onclick="openWhatsApp()">تواصل للاشتراك عالواتساب</a></div>
+<div id="s2" class="section"><button class="back" onclick="goHome()">← رجوع</button><h2>2 ثانوي</h2><div class="video-box"><h4>📄 مذكرة رياضة</h4></div><a class="wa" href="#" onclick="openWhatsApp()">تواصل للاشتراك</a></div>
+<div id="prog" class="section"><button class="back" onclick="goHome()">← رجوع</button><h2>البرمجة 💻</h2><div class="video-box"><h4>كورس عمل موقع زي ده</h4></div><a class="wa" href="#" onclick="openWhatsApp()">احجز مكانك</a></div>
+<div id="quran" class="section"><button class="back" onclick="goHome()">← رجوع</button><h2>القرآن الكريم 🕌</h2><div class="video-box"><h4>حلقات حفظ ومتابعة يومية</h4></div><a class="wa" href="#" onclick="openWhatsApp()">انضم للحلقة</a></div>
 <footer>© 2026 أكاديمية أنس</footer>
+<script>
+function openSection(id){document.getElementById('home').style.display='none';document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function goHome(){document.getElementById('home').style.display='block';document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));}
+function openWhatsApp(){window.open('https://wa.me/201000000000?text=السلام عليكم يا مستر أنس عايز اشترك','_blank');}
+</script>
 </body>
 </html>
